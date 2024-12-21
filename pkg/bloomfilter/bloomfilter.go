@@ -27,8 +27,8 @@ func (b *BloomFilter) hash(item string, seed int) uint64 {
 	return h.Sum64() % b.size
 }
 
-// Add Bloom filter에 아이템을 추가합니다.
-func (b *BloomFilter) Add(item string) {
+// Insertion Bloom filter에 아이템을 추가합니다.
+func (b *BloomFilter) Insertion(item string) {
 	for i := 0; i < b.hashCount; i++ {
 		index := b.hash(item, i)
 		bitIndex := index / 64
@@ -37,8 +37,8 @@ func (b *BloomFilter) Add(item string) {
 	}
 }
 
-// Check 아이템이 Bloom filter에 포함되어 있는지 확인합니다.
-func (b *BloomFilter) Check(item string) bool {
+// Query 아이템이 Bloom filter에 포함되어 있는지 확인합니다.
+func (b *BloomFilter) Query(item string) bool {
 	for i := 0; i < b.hashCount; i++ {
 		index := b.hash(item, i)
 		bitIndex := index / 64

@@ -7,7 +7,7 @@ import (
 
 func main() {
 	bloom := bloomfilter.NewBloomFilter(1000, 5)
-	bloom.Add("apple")
-	fmt.Println(bloom.Check("apple"))  // true
-	fmt.Println(bloom.Check("banana")) // false (허위 긍정 가능성 있음)
+	bloom.Insertion("apple")
+	fmt.Println(bloom.Query("apple"))  // true
+	fmt.Println(bloom.Query("banana")) // false (허위 긍정 가능성 있음)
 }
